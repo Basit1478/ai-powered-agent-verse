@@ -48,7 +48,7 @@ export default function Home() {
     {
       icon: Utensils,
       title: "Food Industry",
-      description: "Recipe optimization, food safety compliance, inventory management, and customer preference analysis.",
+      description: "Smart solutions for recipe management, safety compliance, and customer insights.",
       agentCount: 10,
       gradient: "from-orange-500 to-red-500",
       bgGlow: "bg-orange-500/20",
@@ -56,7 +56,7 @@ export default function Home() {
     {
       icon: Factory,
       title: "Machine Industry",
-      description: "Predictive maintenance, production optimization, quality control, and supply chain automation.",
+      description: "Predictive maintenance, production optimization, and supply chain automation.",
       agentCount: 10,
       gradient: "from-slate-500 to-zinc-600",
       bgGlow: "bg-slate-500/20",
@@ -64,7 +64,7 @@ export default function Home() {
     {
       icon: Shirt,
       title: "Textile Industry",
-      description: "Design trend analysis, fabric quality control, sustainable sourcing, and fashion forecasting.",
+      description: "Trend analysis, quality control, and sustainable sourcing intelligence.",
       agentCount: 10,
       gradient: "from-pink-500 to-purple-500",
       bgGlow: "bg-pink-500/20",
@@ -72,7 +72,7 @@ export default function Home() {
     {
       icon: Building2,
       title: "Real Estate",
-      description: "Property valuation, market analysis, lead generation, and virtual tour coordination.",
+      description: "Property valuation, market insights, and automated lead management.",
       agentCount: 10,
       gradient: "from-emerald-500 to-teal-500",
       bgGlow: "bg-emerald-500/20",
@@ -80,7 +80,7 @@ export default function Home() {
     {
       icon: Stethoscope,
       title: "Medical Industry",
-      description: "Patient triage, appointment scheduling, medical research, and healthcare compliance.",
+      description: "Patient care optimization, scheduling, and healthcare compliance.",
       agentCount: 10,
       gradient: "from-blue-500 to-cyan-500",
       bgGlow: "bg-blue-500/20",
@@ -88,7 +88,7 @@ export default function Home() {
     {
       icon: Cpu,
       title: "Tech Industry",
-      description: "Code review, DevOps automation, technical documentation, and security analysis.",
+      description: "Code review, DevOps automation, and security analysis tools.",
       agentCount: 10,
       gradient: "from-violet-500 to-indigo-500",
       bgGlow: "bg-violet-500/20",
@@ -137,79 +137,60 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 px-4">
-        {/* Background Effects */}
+      <section className="relative pt-24 pb-12 px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-3xl opacity-50" />
         
         <motion.div
-          className="max-w-7xl mx-auto text-center relative z-10"
+          className="max-w-6xl mx-auto text-center relative z-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm">
+          <motion.div variants={itemVariants} className="mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-primary/10 text-primary border border-primary/20">
               <Sparkles className="w-4 h-4" />
-              60+ Specialized AI Agents Across 6 Industries
+              60+ AI Agents | 6 Industries
             </span>
           </motion.div>
           
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-[1.1] tracking-tight"
           >
-            The Future of{" "}
-            <span className="relative">
-              <span className="gradient-text">Industry</span>
-              <motion.span
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-              />
-            </span>
-            <br />
-            <span className="text-muted-foreground">is AI-Powered</span>
+            AI-Powered{" "}
+            <span className="gradient-text">Industry Solutions</span>
           </motion.h1>
           
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-4xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto"
           >
-            Transform your business with intelligent AI agents designed for 
-            <span className="text-foreground font-medium"> Food, Manufacturing, Textile, Real Estate, Medical, </span>
-            and <span className="text-foreground font-medium">Tech</span> industries.
+            Intelligent AI agents for Food, Manufacturing, Textile, Real Estate, Medical, and Tech industries.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button variant="gradient" size="xl" asChild className="group text-lg px-8">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+            <Button variant="gradient" size="lg" asChild className="group">
               <Link to="/agents">
-                Explore All Agents
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                Explore Agents
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button variant="outline" size="xl" asChild className="text-lg px-8">
-              <Link to="/pricing">See Pricing</Link>
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/pricing">View Pricing</Link>
             </Button>
           </motion.div>
 
           {/* Stats */}
           <motion.div 
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto"
           >
-            {stats.map((stat, index) => (
-              <div 
-                key={stat.label}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-0 group-hover:opacity-100" />
-                <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 hover:border-primary/30 transition-all">
-                  <stat.icon className="w-6 h-6 text-primary mx-auto mb-3" />
-                  <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-card/50 border border-border/50 rounded-xl p-4 hover:border-primary/30 transition-all">
+                <stat.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                <div className="text-2xl md:text-3xl font-bold gradient-text">{stat.value}</div>
+                <div className="text-xs text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -217,59 +198,49 @@ export default function Home() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-24 px-4 relative">
+      <section className="py-12 px-4 relative">
         <div className="absolute inset-0 bg-muted/30" />
         <motion.div
-          className="max-w-7xl mx-auto relative z-10"
+          className="max-w-6xl mx-auto relative z-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              AI Agents for{" "}
-              <span className="gradient-text">Every Industry</span>
+          <motion.div variants={itemVariants} className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              <span className="gradient-text">Industry Solutions</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Each industry has 10 specialized AI agents trained on domain-specific knowledge 
-              and best practices to deliver exceptional results.
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              10 specialized AI agents per industry, trained on domain-specific knowledge.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industries.map((industry, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {industries.map((industry) => (
               <motion.div
                 key={industry.title}
                 variants={itemVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                whileHover={{ y: -4 }}
               >
                 <Link to="/agents" className="block h-full">
-                  <Card className="h-full bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/40 transition-all duration-300 overflow-hidden group">
-                    <CardContent className="p-8 relative">
-                      {/* Background Glow */}
-                      <div className={`absolute top-0 right-0 w-32 h-32 ${industry.bgGlow} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                      
-                      <div className="relative z-10">
-                        <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${industry.gradient} mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <industry.icon className="h-8 w-8 text-white" />
+                  <Card className="h-full bg-card/80 border border-border/50 hover:border-primary/40 transition-all group">
+                    <CardContent className="p-5">
+                      <div className="flex items-start gap-4">
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${industry.gradient} group-hover:scale-105 transition-transform`}>
+                          <industry.icon className="h-6 w-6 text-white" />
                         </div>
-                        
-                        <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                          {industry.title}
-                        </h3>
-                        
-                        <p className="text-muted-foreground mb-6 leading-relaxed">
-                          {industry.description}
-                        </p>
-                        
-                        <div className="flex items-center justify-between">
-                          <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-                            <Bot className="w-4 h-4" />
-                            {industry.agentCount} AI Agents
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors">
+                            {industry.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-2">
+                            {industry.description}
+                          </p>
+                          <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
+                            <Bot className="w-3 h-3" />
+                            {industry.agentCount} Agents
                           </span>
-                          <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
                         </div>
                       </div>
                     </CardContent>
@@ -279,11 +250,11 @@ export default function Home() {
             ))}
           </div>
 
-          <motion.div variants={itemVariants} className="text-center mt-12">
-            <Button variant="gradient" size="lg" asChild className="group">
+          <motion.div variants={itemVariants} className="text-center mt-8">
+            <Button variant="gradient" size="default" asChild className="group">
               <Link to="/agents">
-                View All 60+ Agents
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                View All Agents
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </motion.div>
@@ -291,44 +262,33 @@ export default function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-4">
+      <section className="py-12 px-4">
         <motion.div
-          className="max-w-7xl mx-auto"
+          className="max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Why Businesses{" "}
-              <span className="gradient-text">Choose Us</span>
+          <motion.div variants={itemVariants} className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-2">
+              Why <span className="gradient-text">Choose Us</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Enterprise-grade AI solutions that scale with your business needs
-            </p>
+            <p className="text-muted-foreground">Enterprise-grade AI that scales with your needs</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                variants={itemVariants}
-                className="group"
-              >
-                <div className="flex gap-6 p-8 rounded-3xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-card transition-all duration-300">
-                  <div className="flex-shrink-0">
-                    <div className="p-4 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <benefit.icon className="h-7 w-7 text-primary" />
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {benefits.map((benefit) => (
+              <motion.div key={benefit.title} variants={itemVariants} className="group">
+                <div className="flex gap-4 p-5 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 transition-all">
+                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors h-fit">
+                    <benefit.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">
                       {benefit.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {benefit.description}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -338,28 +298,22 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16 px-4 border-y border-border/50 bg-muted/20">
+      <section className="py-8 px-4 border-y border-border/50 bg-muted/20">
         <motion.div
-          className="max-w-7xl mx-auto"
+          className="max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.p variants={itemVariants} className="text-center text-muted-foreground mb-8">
-            Trusted by industry leaders worldwide
+          <motion.p variants={itemVariants} className="text-center text-sm text-muted-foreground mb-4">
+            Trusted by industry leaders
           </motion.p>
-          <motion.div 
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-4 md:gap-8"
-          >
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3">
             {trustedBy.map((company) => (
-              <div 
-                key={company}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-border/50"
-              >
-                <CheckCircle2 className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-muted-foreground">{company}</span>
+              <div key={company} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/50 border border-border/50">
+                <CheckCircle2 className="w-3 h-3 text-primary" />
+                <span className="text-xs font-medium text-muted-foreground">{company}</span>
               </div>
             ))}
           </motion.div>
@@ -367,53 +321,32 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        {/* Background Effects */}
+      <section className="py-12 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
         
         <motion.div
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-3xl mx-auto text-center relative z-10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
-              <Sparkles className="w-4 h-4" />
-              Start Your AI Journey Today
-            </span>
-          </motion.div>
-          
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-6"
-          >
-            Ready to Transform{" "}
-            <span className="gradient-text">Your Industry?</span>
+          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold mb-3">
+            Ready to <span className="gradient-text">Get Started?</span>
           </motion.h2>
           
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
-          >
-            Join thousands of forward-thinking companies using our AI agents 
-            to streamline operations, reduce costs, and drive innovation.
+          <motion.p variants={itemVariants} className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            Join companies using AI agents to streamline operations and drive innovation.
           </motion.p>
           
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="gradient" size="xl" asChild className="group text-lg px-10">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button variant="gradient" size="lg" asChild className="group">
               <Link to="/agents">
                 Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button variant="outline" size="xl" asChild className="text-lg px-10">
+            <Button variant="outline" size="lg" asChild>
               <Link to="/contact">Contact Sales</Link>
             </Button>
           </motion.div>
