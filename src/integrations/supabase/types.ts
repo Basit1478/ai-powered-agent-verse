@@ -280,10 +280,7 @@ export type Database = {
         Args: { user_id_param: string }
         Returns: Json
       }
-      reset_monthly_conversations: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
+      reset_monthly_conversations: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
