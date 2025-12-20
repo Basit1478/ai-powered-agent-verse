@@ -1637,9 +1637,16 @@ Auto-detect the user's language and respond in the same language.`,
               </div>
               <div className="h-[calc(100%-80px)]">
                 <ChatInterface 
-                  agent={chatAgent.id}
-                  agentName={chatAgent.name}
-                  systemPrompt={chatAgent.systemPrompt}
+                  agent={{
+                    id: chatAgent.id,
+                    name: chatAgent.name,
+                    icon: chatAgent.icon,
+                    color: chatAgent.gradient,
+                    description: chatAgent.description,
+                    specialties: chatAgent.specialties,
+                    systemPrompt: chatAgent.systemPrompt
+                  }}
+                  onClose={closeChatInterface}
                 />
               </div>
             </motion.div>
