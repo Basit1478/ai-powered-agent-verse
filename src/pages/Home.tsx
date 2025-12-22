@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { RAGChatbot } from "@/components/RAGChatbot"
 import { 
   ArrowRight, 
   Utensils, 
@@ -352,6 +353,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* RAG Chatbot */}
+      <RAGChatbot />
     </div>
   )
 }
