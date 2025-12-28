@@ -19,7 +19,9 @@ const Auth = () => {
   useEffect(() => {
     // Check if user is already logged in
     const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       if (user) {
         navigate("/");
       }
@@ -33,7 +35,7 @@ const Auth = () => {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -41,13 +43,13 @@ const Auth = () => {
     setIsLoading(true);
     try {
       const redirectUrl = `${window.location.origin}/`;
-      
+
       const { error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: redirectUrl
-        }
+          emailRedirectTo: redirectUrl,
+        },
       });
 
       if (error) {
@@ -55,13 +57,13 @@ const Auth = () => {
           toast({
             title: "Account exists",
             description: "An account with this email already exists. Please sign in instead.",
-            variant: "destructive"
+            variant: "destructive",
           });
         } else {
           toast({
             title: "Sign up failed",
             description: error.message,
-            variant: "destructive"
+            variant: "destructive",
           });
         }
       } else {
@@ -74,7 +76,7 @@ const Auth = () => {
       toast({
         title: "Error",
         description: "An unexpected error occurred",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -85,9 +87,9 @@ const Auth = () => {
     e.preventDefault();
     if (!email || !password) {
       toast({
-        title: "Error", 
+        title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -104,13 +106,13 @@ const Auth = () => {
           toast({
             title: "Login failed",
             description: "Invalid email or password. Please try again.",
-            variant: "destructive"
+            variant: "destructive",
           });
         } else {
           toast({
             title: "Login failed",
             description: error.message,
-            variant: "destructive"
+            variant: "destructive",
           });
         }
       } else {
@@ -124,7 +126,7 @@ const Auth = () => {
       toast({
         title: "Error",
         description: "An unexpected error occurred",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
@@ -135,24 +137,24 @@ const Auth = () => {
     setIsSocialLoading(true);
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`
-        }
+          redirectTo: `${window.location.origin}/`,
+        },
       });
 
       if (error) {
         toast({
           title: "Google sign in failed",
           description: error.message,
-          variant: "destructive"
+          variant: "destructive",
         });
       }
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to sign in with Google",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSocialLoading(false);
@@ -163,24 +165,24 @@ const Auth = () => {
     setIsSocialLoading(true);
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'github',
+        provider: "github",
         options: {
-          redirectTo: `${window.location.origin}/`
-        }
+          redirectTo: `${window.location.origin}/`,
+        },
       });
 
       if (error) {
         toast({
           title: "GitHub sign in failed",
           description: error.message,
-          variant: "destructive"
+          variant: "destructive",
         });
       }
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to sign in with GitHub",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSocialLoading(false);
@@ -191,10 +193,8 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold gradient-text">Welcome to RaahBot</CardTitle>
-          <CardDescription>
-            Access your AI-powered team of specialists
-          </CardDescription>
+          <CardTitle className="text-2xl font-bold gradient-text">Welcome to AgentHub</CardTitle>
+          <CardDescription>Access your AI-powered team of specialists</CardDescription>
         </CardHeader>
         <CardContent>
           {/* Social Login Buttons */}
@@ -215,7 +215,7 @@ const Auth = () => {
                 "Continue with Google"
               )}
             </Button>
-            
+
             <Button
               onClick={handleGithubSignIn}
               variant="outline"
@@ -240,9 +240,7 @@ const Auth = () => {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with email
-              </span>
+              <span className="bg-background px-2 text-muted-foreground">Or continue with email</span>
             </div>
           </div>
           <Tabs defaultValue="signin" className="w-full">
@@ -250,7 +248,7 @@ const Auth = () => {
               <TabsTrigger value="signin">Sign In</TabsTrigger>
               <TabsTrigger value="signup">Sign Up</TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="signin" className="space-y-4">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div className="space-y-2">
@@ -283,11 +281,7 @@ const Auth = () => {
                     />
                   </div>
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isLoading || isSocialLoading}
-                >
+                <Button type="submit" className="w-full" disabled={isLoading || isSocialLoading}>
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -299,7 +293,7 @@ const Auth = () => {
                 </Button>
               </form>
             </TabsContent>
-            
+
             <TabsContent value="signup" className="space-y-4">
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div className="space-y-2">
@@ -333,11 +327,7 @@ const Auth = () => {
                     />
                   </div>
                 </div>
-                <Button 
-                  type="submit" 
-                  className="w-full" 
-                  disabled={isLoading || isSocialLoading}
-                >
+                <Button type="submit" className="w-full" disabled={isLoading || isSocialLoading}>
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />

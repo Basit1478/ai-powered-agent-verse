@@ -1,17 +1,23 @@
-import React, { useState } from "react"
-import { motion } from "framer-motion"
-import { Link, useLocation } from "react-router-dom"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { useAuth } from "@/contexts/AuthContext"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Menu, X, Bot, User, LogOut, Settings } from "lucide-react"
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, Bot, User, LogOut, Settings } from "lucide-react";
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const location = useLocation()
-  const { user, signOut, loading } = useAuth()
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const { user, signOut, loading } = useAuth();
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -20,9 +26,9 @@ export function Navbar() {
     { name: "Pricing", href: "/pricing" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
-  const isActive = (href: string) => location.pathname === href
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -37,7 +43,7 @@ export function Navbar() {
             >
               <Bot className="h-6 w-6 text-white" />
             </motion.div>
-            <span className="text-xl font-bold gradient-text">RaahBot for Teams</span>
+            <span className="text-xl font-bold gradient-text">AgentHub</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -47,9 +53,7 @@ export function Navbar() {
                 key={item.name}
                 to={item.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(item.href)
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-muted-foreground"
+                  isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
                 }`}
               >
                 {item.name}
@@ -67,9 +71,7 @@ export function Navbar() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                      <AvatarFallback>
-                        {user.email?.charAt(0).toUpperCase() || 'U'}
-                      </AvatarFallback>
+                      <AvatarFallback>{user.email?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
@@ -78,7 +80,7 @@ export function Navbar() {
                     <div className="flex flex-col space-y-1 leading-none">
                       <p className="font-medium">{user.email}</p>
                       <p className="w-[200px] truncate text-sm text-muted-foreground">
-                        {user.user_metadata?.full_name || 'User'}
+                        {user.user_metadata?.full_name || "User"}
                       </p>
                     </div>
                   </div>
@@ -96,10 +98,7 @@ export function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="cursor-pointer"
-                    onSelect={() => signOut()}
-                  >
+                  <DropdownMenuItem className="cursor-pointer" onSelect={() => signOut()}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                   </DropdownMenuItem>
@@ -120,11 +119,7 @@ export function Navbar() {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-            >
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -159,9 +154,7 @@ export function Navbar() {
                 <div className="flex flex-col space-y-2 w-full">
                   <div className="flex items-center space-x-2 px-2 py-1 bg-accent rounded-md">
                     <Avatar className="h-6 w-6">
-                      <AvatarFallback className="text-xs">
-                        {user.email?.charAt(0).toUpperCase() || 'U'}
-                      </AvatarFallback>
+                      <AvatarFallback className="text-xs">{user.email?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
                     </Avatar>
                     <span className="text-sm font-medium truncate">{user.email}</span>
                   </div>
@@ -169,8 +162,8 @@ export function Navbar() {
                     variant="outline"
                     size="sm"
                     onClick={() => {
-                      signOut()
-                      setIsOpen(false)
+                      signOut();
+                      setIsOpen(false);
                     }}
                     className="w-full"
                   >
@@ -181,10 +174,14 @@ export function Navbar() {
               ) : (
                 <>
                   <Button variant="ghost" className="flex-1" asChild>
-                    <Link to="/auth" onClick={() => setIsOpen(false)}>Sign In</Link>
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      Sign In
+                    </Link>
                   </Button>
                   <Button variant="gradient" className="flex-1" asChild>
-                    <Link to="/auth" onClick={() => setIsOpen(false)}>Get Started</Link>
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      Get Started
+                    </Link>
                   </Button>
                 </>
               )}
@@ -193,5 +190,5 @@ export function Navbar() {
         </motion.div>
       )}
     </nav>
-  )
+  );
 }
