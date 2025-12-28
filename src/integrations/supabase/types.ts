@@ -44,6 +44,27 @@ export type Database = {
         }
         Relationships: []
       }
+      agent_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
       chat_history: {
         Row: {
           agent_id: string
@@ -77,6 +98,134 @@ export type Database = {
         }
         Relationships: []
       }
+      complexity_levels: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          multiplier: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          multiplier?: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          multiplier?: number
+          name?: string
+        }
+        Relationships: []
+      }
+      custom_agents: {
+        Row: {
+          calculated_price: number
+          category_id: string | null
+          complexity_id: string | null
+          created_at: string
+          id: string
+          industry_id: string | null
+          name: string
+          platform_id: string | null
+          selected_features: string[] | null
+          status: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          calculated_price?: number
+          category_id?: string | null
+          complexity_id?: string | null
+          created_at?: string
+          id?: string
+          industry_id?: string | null
+          name: string
+          platform_id?: string | null
+          selected_features?: string[] | null
+          status?: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          calculated_price?: number
+          category_id?: string | null
+          complexity_id?: string | null
+          created_at?: string
+          id?: string
+          industry_id?: string | null
+          name?: string
+          platform_id?: string | null
+          selected_features?: string[] | null
+          status?: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "custom_agents_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "agent_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "custom_agents_complexity_id_fkey"
+            columns: ["complexity_id"]
+            isOneToOne: false
+            referencedRelation: "complexity_levels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "custom_agents_industry_id_fkey"
+            columns: ["industry_id"]
+            isOneToOne: false
+            referencedRelation: "industries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "custom_agents_platform_id_fkey"
+            columns: ["platform_id"]
+            isOneToOne: false
+            referencedRelation: "platforms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      features: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_premium: boolean | null
+          name: string
+          price: number
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_premium?: boolean | null
+          name: string
+          price?: number
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_premium?: boolean | null
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
       file_uploads: {
         Row: {
           created_at: string
@@ -104,6 +253,194 @@ export type Database = {
           id?: string
           storage_path?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      industries: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+        }
+        Relationships: []
+      }
+      marketplace_agents: {
+        Row: {
+          base_price: number
+          capabilities: string[] | null
+          category_id: string | null
+          complexity_id: string | null
+          created_at: string
+          description: string | null
+          features: string[] | null
+          id: string
+          industry_id: string | null
+          is_featured: boolean | null
+          name: string
+          platform_id: string | null
+          preview_image: string | null
+          purchases_count: number | null
+          status: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt: string | null
+          updated_at: string
+          use_cases: string[] | null
+        }
+        Insert: {
+          base_price?: number
+          capabilities?: string[] | null
+          category_id?: string | null
+          complexity_id?: string | null
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          industry_id?: string | null
+          is_featured?: boolean | null
+          name: string
+          platform_id?: string | null
+          preview_image?: string | null
+          purchases_count?: number | null
+          status?: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt?: string | null
+          updated_at?: string
+          use_cases?: string[] | null
+        }
+        Update: {
+          base_price?: number
+          capabilities?: string[] | null
+          category_id?: string | null
+          complexity_id?: string | null
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          industry_id?: string | null
+          is_featured?: boolean | null
+          name?: string
+          platform_id?: string | null
+          preview_image?: string | null
+          purchases_count?: number | null
+          status?: Database["public"]["Enums"]["agent_status"] | null
+          system_prompt?: string | null
+          updated_at?: string
+          use_cases?: string[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketplace_agents_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "agent_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marketplace_agents_complexity_id_fkey"
+            columns: ["complexity_id"]
+            isOneToOne: false
+            referencedRelation: "complexity_levels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marketplace_agents_industry_id_fkey"
+            columns: ["industry_id"]
+            isOneToOne: false
+            referencedRelation: "industries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marketplace_agents_platform_id_fkey"
+            columns: ["platform_id"]
+            isOneToOne: false
+            referencedRelation: "platforms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          agent_id: string | null
+          agent_type: string
+          created_at: string
+          id: string
+          invoice_number: string | null
+          metadata: Json | null
+          payment_method: Database["public"]["Enums"]["payment_method"] | null
+          payment_reference: string | null
+          status: Database["public"]["Enums"]["order_status"] | null
+          total_amount: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agent_id?: string | null
+          agent_type: string
+          created_at?: string
+          id?: string
+          invoice_number?: string | null
+          metadata?: Json | null
+          payment_method?: Database["public"]["Enums"]["payment_method"] | null
+          payment_reference?: string | null
+          status?: Database["public"]["Enums"]["order_status"] | null
+          total_amount: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agent_id?: string | null
+          agent_type?: string
+          created_at?: string
+          id?: string
+          invoice_number?: string | null
+          metadata?: Json | null
+          payment_method?: Database["public"]["Enums"]["payment_method"] | null
+          payment_reference?: string | null
+          status?: Database["public"]["Enums"]["order_status"] | null
+          total_amount?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      platforms: {
+        Row: {
+          base_price: number | null
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          base_price?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          base_price?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
         }
         Relationships: []
       }
@@ -206,6 +543,45 @@ export type Database = {
         }
         Relationships: []
       }
+      support_requests: {
+        Row: {
+          admin_response: string | null
+          agent_id: string | null
+          created_at: string
+          id: string
+          message: string
+          priority: string | null
+          status: string | null
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_response?: string | null
+          agent_id?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          priority?: string | null
+          status?: string | null
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_response?: string | null
+          agent_id?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          priority?: string | null
+          status?: string | null
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       survey_responses: {
         Row: {
           created_at: string
@@ -234,6 +610,77 @@ export type Database = {
             referencedColumns: ["user_id"]
           },
         ]
+      }
+      user_agents: {
+        Row: {
+          agent_id: string | null
+          agent_type: string
+          api_key: string | null
+          configuration: Json | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          name: string
+          order_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          agent_id?: string | null
+          agent_type: string
+          api_key?: string | null
+          configuration?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          order_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          agent_id?: string | null
+          agent_type?: string
+          api_key?: string | null
+          configuration?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          order_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_agents_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
       }
       voice_settings: {
         Row: {
@@ -280,10 +727,20 @@ export type Database = {
         Args: { user_id_param: string }
         Returns: Json
       }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       reset_monthly_conversations: { Args: never; Returns: undefined }
     }
     Enums: {
-      [_ in never]: never
+      agent_status: "draft" | "published" | "archived"
+      app_role: "admin" | "moderator" | "user"
+      order_status: "pending" | "paid" | "failed" | "refunded"
+      payment_method: "card" | "jazzcash" | "easypaisa" | "bank_transfer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -410,6 +867,11 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      agent_status: ["draft", "published", "archived"],
+      app_role: ["admin", "moderator", "user"],
+      order_status: ["pending", "paid", "failed", "refunded"],
+      payment_method: ["card", "jazzcash", "easypaisa", "bank_transfer"],
+    },
   },
 } as const
